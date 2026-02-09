@@ -35,8 +35,8 @@ EXAMPLES = r"""
 - name: Set maas_name configuration parameter
   maas.maas.config:
     cluster_instance: my-cluster-instance
-    setting: maas_name
-    setting_value: new-maas-name
+    name: maas_name
+    value: new-maas-name
 """
 
 RETURN = r"""
