@@ -1,0 +1,33 @@
+---
+- environment:
+    MAAS_HOST: "{{ host }}"
+    MAAS_TOKEN_KEY: "{{ token_key }}"
+    MAAS_TOKEN_SECRET: "{{ token_secret }}"
+    MAAS_CUSTOMER_KEY: "{{ customer_key }}"
+
+  block:
+    - name: Set Name of MAAS
+      maas.maas.maas_config:
+        name: maas_name
+        value: new_name
+      register: name_change
+
+    - name: Assert
+      ansible.builtin.assert:
+        that:
+          - name_change.changed
+          - name_change.record.value == "name_change"
+
+    - name: Set Name of MAAS again
+      maas.maas.maas_config:
+        name: maas_name
+        value: new_name
+      register: name_change
+
+
+    - name: Assert
+      ansible.builtin.assert:
+        that:
+          - not name_change.changed
+          - name_change.record.value == "name_change"
+

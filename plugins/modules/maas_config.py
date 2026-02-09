@@ -50,27 +50,29 @@ record:
     value: new-maas-name
 """
 
-import json
-
 from ansible.module_utils.basic import AnsibleModule
 
 from ..module_utils import arguments, errors
 from ..module_utils.client import Client
 from ..module_utils.cluster_instance import get_oauth1_client
 
-DEBUG = []
 
 def run(module, client: Client):
     name = module.params["name"]
     value = module.params["value"]
     changed = False
 
-    current_value = client.get("/api/2.0/maas/op-get_config", query={"name": name}).json
+    current_value = client.get(
+        "/api/2.0/maas/op-get_config", query={"name": name}
+    ).json
 
     if current_value != value:
         changed = True
         if not module.check_mode:
-          client.post("/api/2.0/maas/op-set_config", data={"name": name, "value": value})
+            client.post(
+                "/api/2.0/maas/op-set_config",
+                data={"name": name, "value": value},
+            )
 
     record = {"name": name, "value": value}
 
