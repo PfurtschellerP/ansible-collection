@@ -14,14 +14,16 @@ module: maas_config
 author:
   - Patrick Pfurtscheller (@pfurtschellerp)
 short_description: Manage MAAS configuration parameters.
+description:
+  - This module allows you to manage MAAS configuration parameters by setting their values.
 version_added: 1.1.0
 extends_documentation_fragment:
   - maas.maas.cluster_instance
 seealso: []
 options:
   name:
-      description:
-        - Setting to be changed.
+    description:
+      - Setting to be changed.
     type: str
     required: True
   value:

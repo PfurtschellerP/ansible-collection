@@ -24,10 +24,8 @@
         value: new_name
       register: name_change
 
-
     - name: Assert
       ansible.builtin.assert:
         that:
           - not name_change.changed
           - name_change.record.value == "name_change"
-
