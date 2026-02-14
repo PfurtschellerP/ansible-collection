@@ -89,6 +89,7 @@ def run_main(mocker):
         )
         args["ANSIBLE_MODULE_ARGS"].update(params or {})
         mocker.patch.object(basic, "_ANSIBLE_ARGS", to_bytes(json.dumps(args)))
+        mocker.patch.object(basic, "_ANSIBLE_PROFILE", "legacy")
 
         # We can mock the run function because we enforce module structure in our
         # development guidelines.
@@ -117,6 +118,7 @@ def run_main_with_reboot(mocker):
         )
         args["ANSIBLE_MODULE_ARGS"].update(params or {})
         mocker.patch.object(basic, "_ANSIBLE_ARGS", to_bytes(json.dumps(args)))
+        mocker.patch.object(basic, "_ANSIBLE_PROFILE", "legacy")
 
         # We can mock the run function because we enforce module structure in our
         # development guidelines.
@@ -145,6 +147,7 @@ def run_main_info(mocker):
         )
         args["ANSIBLE_MODULE_ARGS"].update(params or {})
         mocker.patch.object(basic, "_ANSIBLE_ARGS", to_bytes(json.dumps(args)))
+        mocker.patch.object(basic, "_ANSIBLE_PROFILE", "legacy")
 
         # We can mock the run function because we enforce module structure in our
         # development guidelines.
