@@ -18,7 +18,7 @@ jobs:
           env -C "$GITHUB_WORKSPACE/$REPO_DIR" -- tox -e docs
 
   sanity-test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -30,7 +30,7 @@ jobs:
           env -C "$GITHUB_WORKSPACE/$REPO_DIR" -- tox -e sanity
 
   units-test:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
